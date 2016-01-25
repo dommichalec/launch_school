@@ -45,3 +45,21 @@ p person[:name]
 
 example_hash = {:one => 1, :two => 2, :three => 3}
 p example_hash.has_value?(3) # => should evaluate to true
+
+# Given the following data structures. Write a program that moves the
+# information from the array into the empty hash that applies to the
+# correct person.
+
+contact_data = [["joe@email.com", "123 Main st.", "555-123-4567"],
+            ["sally@email.com", "404 Not Found Dr.", "123-234-3454"]]
+
+contacts = {"Joe Smith" => {}, "Sally Johnson" => {}}
+
+contacts["Joe Smith"] = contact_data[0]
+contacts["Sally Johnson"] = contact_data[1]
+p contacts
+
+# Using the hash you created from the previous exercise, demonstrate how you
+# would access Joe's email and Sally's phone number?
+p contacts["Joe Smith"][0]
+p contacts["Sally Johnson"][0]
