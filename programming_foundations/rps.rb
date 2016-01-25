@@ -1,5 +1,3 @@
-require 'pry'
-
 AVAILABLE_CHOICES = %w(rock paper scissors)
 
 def prompt(msg)
