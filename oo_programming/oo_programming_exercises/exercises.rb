@@ -6,55 +6,81 @@ class Animal # created a superclass that encapsulates logic shared by subclasses
 end
 
 module Swimmable
-  def swim
+  def can_swim?
     "has the ability to swim!"
   end
 end
 
-class Dog < Animal # Dog class inherits all the behaviors of the Animal class
-  def initialize(name, breed)
-    @name = name
-    @breed = breed
-    puts "#{@name} has been created!"
-  end
-
-  def speak # this method overrides the Animal superclass method #speak
-    puts "#{@name} says woof!"
+module Climbable
+  def can_climb?
+    "has the ability to climb!"
   end
 end
 
-class Cat < Animal # Cat class inherits all behaviors of the Animal class
-  attr_accessor(:name)
-  attr_reader(:color)
-  include Swimmable
+module Mammals # grouping similar animals together in a module
+  class Dog < Animal # Dog class inherits all the behaviors of the Animal class
+    attr_accessor(:name)
+    include Swimmable
+    include Climbable
 
-  def swim
-    puts "#{name} " + super
+    def initialize(name, breed)
+      @name = name
+      @breed = breed
+      puts "#{@name} has been created!"
+    end
+
+    def speak # this method overrides the Animal superclass method #speak
+      puts "#{@name} says woof!"
+    end
+
+    def can_swim?
+      puts "#{name} " + super
+      true
+    end
+
+    def can_climb?
+      puts "#{name} " + super
+      true
+    end
+
   end
 
-  def initialize(name, color)
-    @name = name
-    @color = color
-    puts "#{@name} has been created!"
-  end
+  class Cat < Animal # Cat class inherits all behaviors of the Animal class
+    attr_accessor(:name)
+    attr_reader(:color)
+    include Climbable
 
-  def update(name)
-    self.name = name
-    puts "Now the cat's name is #{self.name}."
-  end
+    def initialize(name, color)
+      @name = name
+      @color = color
+      puts "#{@name} has been created!"
+    end
 
-  def speak
-    puts super + " says #{@name}." # using super here allows us to call a method up the inheritance heirarchy (in this case, found in superclass Animal)
+    def update(name)
+      self.name = name
+      puts "Now the cat's name is #{self.name}."
+    end
+
+    def can_climb?
+      puts "#{name} " + super
+    end
+
+    def speak
+      puts super + " says #{@name}." # using super here allows us to call a method up the inheritance heirarchy (in this case, found in superclass Animal)
+    end
   end
 end
 
-lassy = Dog.new("Lassy", "Golden") # instantiating a new object, lassy
+lassy = Mammals::Dog.new("Lassy", "Golden") # instantiating a new object, lassy via Module::Class.new
 lassy.speak # => "Lassy says woof"
-willow = Cat.new("Willow", "Black") # instantiating a new object, willow
+willow = Mammals::Cat.new("Willow", "Black") # instantiating a new object, willow via Module::Class.new
 willow.speak # => "hello!, says Willow!"
-willow.swim
+willow.can_climb?
 willow.update("Paws")
 willow.speak
-willow.swim
+willow.can_climb?
+lassy.can_swim?
+lassy.can_climb?
 
 puts Cat.ancestors
+puts Dog.ancestors
