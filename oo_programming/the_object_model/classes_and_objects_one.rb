@@ -1,7 +1,7 @@
 # MyCar class
 class MyCar
   attr_accessor(:color) # sets the getter #name and setter #name= method
-  attr_reader(:year) # sets the getter #year method only
+  attr_reader(:year, :model) # sets the getter #year method only
 
   def initialize(year, model, color)
     @year = year
@@ -20,6 +20,10 @@ class MyCar
     print '...'
     sleep 3.0
     puts "Your new #{color} #{@model} looks great!"
+  end
+
+  def get_update
+    puts "You currently own a #{self.color} #{@year} #{@model}."
   end
 
   def turn_on
@@ -63,3 +67,4 @@ my_car.slow_down(20)
 my_car.slam_breaks
 my_car.shut_down
 my_car.spray_paint('red')
+my_car.get_update
