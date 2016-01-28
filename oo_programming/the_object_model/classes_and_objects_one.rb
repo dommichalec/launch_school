@@ -3,10 +3,16 @@ class MyCar
   attr_accessor(:color) # sets the getter #name and setter #name= method
   attr_reader(:year, :model) # sets the getter #year method only
 
+  # Start class methods
+  def self.calculate_gas_milage(gallons, miles)
+    puts "Your vehicle gets #{miles.to_f / gallons.to_f} miles to the gallon"
+  end
+
+  # Start instance methods
   def initialize(year, model, color)
     @year = year
     @model = model
-    @color = color
+    self.color = color
     @current_speed = 0
     puts "Your #{@color} #{@model} looks great!"
   end
@@ -22,8 +28,8 @@ class MyCar
     puts "Your new #{color} #{@model} looks great!"
   end
 
-  def get_update
-    puts "You currently own a #{self.color} #{@year} #{@model}."
+  def to_s
+    puts "You currently own a #{self.color} #{self.year} #{model}."
   end
 
   def turn_on
@@ -57,6 +63,7 @@ end
 
 my_car = MyCar.new('1997', 'Wrangler', 'yellow')
 my_car.turn_on
+MyCar.calculate_gas_milage(13, 100)
 my_car.speed_up(20)
 my_car.current_speed
 my_car.speed_up(20)
@@ -67,4 +74,4 @@ my_car.slow_down(20)
 my_car.slam_breaks
 my_car.shut_down
 my_car.spray_paint('red')
-my_car.get_update
+puts my_car
