@@ -9,14 +9,14 @@ end
 
 def display_board(brd)
   system 'clear'
-  puts ""
+  puts "  1     2     3     "
   puts "     |     |"
   puts "  #{brd[1]}  |  #{brd[2]}  |   #{brd[3]}"
   puts "-----+-----+-----"
-  puts "     |     |"
+  puts "  4  |  5  |  6     "
   puts "  #{brd[4]}  |  #{brd[5]}  |   #{brd[6]}"
   puts "-----+-----+-----"
-  puts "     |     |"
+  puts "  7  |  8  |  9"
   puts "  #{brd[7]}  |  #{brd[8]}  |   #{brd[9]}"
   puts ""
 end
