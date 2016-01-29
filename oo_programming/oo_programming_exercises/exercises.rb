@@ -18,8 +18,8 @@ module Climbable
 end
 
 module Mammals # grouping similar animals together in a module
-  class Dog < Animal # Dog class inherits all the behaviors of the Animal class
-    attr_accessor(:name)
+  class Dog < Animal # Dog class inherits all the behaviors (methods) of the Animal class
+    attr_accessor(:name) # gives us self.name and self.name= methods for Dog
     include Swimmable
     include Climbable
 
