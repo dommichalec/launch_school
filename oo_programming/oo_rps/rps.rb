@@ -1,3 +1,5 @@
+require 'pry'
+
 # Rock Paper Scissor OOP style
 # RPS is a two person game where each player chooses one of
 # three possible moves: rock paper or scissors.
@@ -36,9 +38,6 @@ class Game
   end
 
   def display_winner
-    puts "You chose #{human.move}"
-    puts "#{computer.name} chose #{computer.move}"
-
     if human.move > computer.move
       puts "You win!"
     elsif human.move < computer.move
@@ -46,6 +45,11 @@ class Game
     else
       puts "It's a tie!"
     end
+  end
+
+  def display_moves
+    puts "You chose #{human.move}"
+    puts "#{computer.name} chose #{computer.move}"
   end
 
   def play_again?
@@ -64,6 +68,8 @@ class Game
     loop do
       human.choose
       computer.choose
+      display_moves
+      binding.pry
       display_winner
       break unless play_again?
     end
@@ -72,7 +78,7 @@ class Game
 end
 
 class Move
-  VALUES = %w(rock paper scissors)
+  VALUES = ['rock', 'paper', 'scissors']
   def initialize(value)
     @value = value
   end
@@ -94,29 +100,15 @@ class Move
   end
 
   def >(other_move)
-    if rock?
-      return true if other_move.scissors?
-      return false
-    elsif paper?
-      return true if other_move.rock?
-      return false
-    else scissors?
-      return true if other_move.paper?
-      return false
-    end
+    (rock? && other_move.scissors?) ||
+    (paper? && other_move.rock?) ||
+    (scissors? && other_move.paper?)
   end
 
   def <(other_move)
-    if rock?
-      return true if other_move.paper?
-      return false
-    elsif paper?
-      return true if other_move.scissors?
-      return false
-    else scissors?
-      return true if other_move.rock?
-      return false
-    end
+    (rock? && other_move.paper?) ||
+    (paper? && other_move.scissors?) ||
+    (scissors? && other_move.rock?)
   end
 end
 
