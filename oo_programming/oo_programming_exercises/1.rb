@@ -1,21 +1,17 @@
-module Maintenance
-  def change_tires
-    "Changing #{Vehicle::WHEELS} tires."
+class Person
+  attr_accessor(:name, :age)
+  def initialize(name, age)
+    @name = name
+    @age =  age
   end
-end
 
-class Vehicle
-  Vehicle::WHEELS = 4
-end
-
-class Car < Vehicle
-  include Maintenance
-
-  def wheels
-    Vehicle::WHEELS
+  def >(other_person)
+    age > other_person.age
   end
+
 end
 
-a_car = Car.new
-p a_car.wheels
-p a_car.change_tires
+todd = Person.new("Todd", 43)
+ashley = Person.new("Ashley", 34)
+
+puts "Todd is older than Ashley" if todd.age > ashley.age
