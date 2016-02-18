@@ -6,9 +6,19 @@ require_relative 'car' # require the file you're testing
 
 # CarTest class
 class CarTest < MiniTest::Test
-  def test_wheels # create instance method that begins with 'test_'
+  def test_wheels
     car = Car.new
-    assert_equal(4, car.wheels) # (expected value, test or actual value)
+    assert_equal(4, car.wheels)
+  end
+
+  def test_value_equality
+    car1 = Car.new
+    car2 = Car.new
+
+    car1.model = "Wrangler"
+    car2.model = "Wrangler"
+
+    assert_equal(car1, car2)
   end
 end
 
