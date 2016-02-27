@@ -57,12 +57,18 @@ class Dog
     @availablity = false
     puts "#{name} has been adopted!"
   end
+
+  def to_s
+    name + " is " + age.to_s + " years old."
+  end
 end
 
 sparky = Dog.new
 sparky.name = "Sparky"
 sparky.age = 4
+puts sparky
 
+=begin
 paws = Dog.new
 paws.name = "Paws"
 paws.age = 7
@@ -76,3 +82,4 @@ columbus = Shelter.new("The Columbus Dog Shelter")
 columbus.add(paws)
 columbus.add(sparky)
 columbus.add(bhodi)
+=end
