@@ -1,5 +1,5 @@
 require 'minitest/autorun'
-require "minitest/reporters"
+require 'minitest/reporters'
 Minitest::Reporters.use!
 require_relative 'protein_translation'
 
@@ -37,6 +37,7 @@ class TranslationTest < Minitest::Test
       assert_equal 'Cysteine', Translation.of_codon(codon)
     end
   end
+
   def test_identifies_Tryptophan_codons
     assert_equal 'Tryptophan', Translation.of_codon('UGG')
   end
