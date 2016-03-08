@@ -2,9 +2,7 @@
 
 ### Given the following URL:
 
-```
-https://amazon.com/Double-Stainless-Commercial-Refrigerator/B60HON32?ie=UTF8&qid=142952676&sr=93&keywords=commercial+fridge
-```
+```https://amazon.com/Double-Stainless-Commercial-Refrigerator/B60HON32?ie=UTF8&qid=142952676&sr=93&keywords=commercial+fridge```
 
 Identify the host: ```amazon.com```
 Identify the ***names*** of the ***query parameters***: ```ie``` , ```qid``` , ```rs``` , ```keywords```
@@ -20,6 +18,7 @@ Add the port ```3000``` to the following URL:
 ```http://amazon.com:3000/products/B60HON32?qid=142952676&sr=93```
 
 Given the following URL:
+
 ```http://localhost:4567/todos/15```
 Identify the ***query parameters***: there are no query parameters
 Identify the ***path***: ```/todos/15```
