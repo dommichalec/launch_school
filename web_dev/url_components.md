@@ -14,7 +14,9 @@ Identify the ***path***: ```/Double-Stainless-Commercial-Refrigerator/B60HON32``
 Identify the ***port***: Most software will use port 443 with ```https``` and port 80 with  ```http```
 
 Add the port ```3000``` to the following URL:
+
 ```http://amazon.com/products/B60HON32?qid=142952676&sr=93```
+
 ```http://amazon.com:3000/products/B60HON32?qid=142952676&sr=93```
 
 Given the following URL:
