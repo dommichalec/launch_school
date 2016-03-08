@@ -11,6 +11,14 @@ loop do
   path == '/'
   params = { 'sides' => '2', 'rolls' => '6' }
 
+  http_method, path_and_params, http = request_line.split(' ')
+  path, params = path_and_params.split('?')
+
+  params = params.split('&').each_with_object({}) do |pair, hash|
+    key, value = pair.split('=')
+    hash[key] = value
+  end
+
   client.puts request_line
   client.puts rand(6) + 1
   client.close
