@@ -2,8 +2,8 @@
 <ul>
   <% @users.keys.each do |name| %>
     <li>
-      <a href="/<%= name %>">
-        <%= name %>
+      <a href="users/<%= name %>">
+        <%= name.capitalize %>
       </a>
     </li>
   <% end %>
