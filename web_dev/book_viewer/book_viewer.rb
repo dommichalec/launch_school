@@ -7,7 +7,7 @@ before do
   @table_of_contents = File.readlines('data/toc.txt')
 end
 
-get '/read' do
+get '/' do
   @title = 'The Adventures of Sherlock Holmes'
   @author = 'Sir Arthur Doyle'
 
@@ -22,10 +22,6 @@ get '/chapters/:number' do
   @chapter = File.read("data/chp#{number}.txt")
 
   erb :chapter
-end
-
-not_found do
-  redirect '/read'
 end
 
 get '/search' do
@@ -44,4 +40,8 @@ get '/search' do
   end
 
   erb :search
+end
+
+not_found do
+  redirect '/'
 end
